@@ -1,23 +1,6 @@
-#from cgi import parse_qs
-# 
-#def app(environ, start_response):
-#    start_response('200 OK', [('Content-type', 'text/plain')])
-#    qs = parse_qs(environ['QUERY_STRING'])
-#    return ['%s=%s\n' %(c,d) for c in qs for d in qs[c] ]
-   
-##
-#import urlparse
-#
-#def app(environ, start_response):
-#	qs = urlparse.parse_qs(environ['QUERY_STRING'])
-#	start_response('200 OK', [('Content-type', 'text/plain')])
-#	return ['%s=%s\n' %(c,d) for c in qs for d in qs[c] ]
-
-#import urlparse
-
-##
-def app(environ, start_response):
-	st = environ['QUERY_STRING']
-	qs = st.split('&')
-	start_response('200 OK', [('Content-type', 'text/plain')])
-	return ['%s\n' %(c) for c in qs]	
+def app(env, start_response):
+  status = '200 OK'
+  headers = [('Content-Type', 'text/plain')]
+  body = env['QUERY_STRING'].replace('&', '\n')
+  start_response(status, headers)
+  return [body]
