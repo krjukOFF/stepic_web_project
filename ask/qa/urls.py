@@ -10,4 +10,7 @@ urlpatterns = [
     url(r'^ask/\w*/ $', test),
     url(r'^popular/$', test),
     url(r'^new/$', test),
+     url(r'^popular/', list_popular, name='list-popular'),
+     url(r'^answer/', post_answer, name='post_answer'),
+     url(r'^question/(?P<slug>\w+)/$', show_question, name='show-question'),
 ]
