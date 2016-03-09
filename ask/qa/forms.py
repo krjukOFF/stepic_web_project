@@ -8,7 +8,7 @@ class AskForm(forms.Form):
 	def clean_title(self):
 		title = self.cleaned_data['title']
 		if len(title) > 255:
-			raise forms.ValidationError(u'Слишком длинный заголовок', code='Long_title')
+			raise forms.ValidationError(u'Most long title', code='Long_title')
 		return title
 
 	def save(self):
